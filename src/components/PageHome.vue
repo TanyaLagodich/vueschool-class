@@ -4,21 +4,15 @@
 </template>
 <script>
 import sourceData from '@/data.json'
+import ThreadList from '@/components/ThreadList.vue'
 
 export default {
+  components: {
+    ThreadList
+  },
   data () {
     return {
-      threads: sourceData.threads,
-      posts: sourceData.posts,
-      users: sourceData.users
-    }
-  },
-  methods: {
-    postById (postId) {
-      return this.posts.find((p) => p.id === postId)
-    },
-    userById (userId) {
-      return this.users.find((u) => u.id === userId)
+      threads: sourceData.threads
     }
   }
 }
