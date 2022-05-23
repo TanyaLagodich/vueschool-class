@@ -2,31 +2,18 @@
      <div class="col-large push-top">
         <h1>{{ thread.title }}</h1>
         <post-list :posts="threadPosts" />
-        <form @submit.prevent="addPost">
-            <div class="form-group">
-                <label for="thread_title">Title:</label>
-                <input type="text" id="thread_title" class="form-input" name="title" >
-            </div>
-
-            <div class="form-group">
-                <label for="thread_content">Content:</label>
-                <textarea v-model="newPostText" id="thread_content" class="form-input" name="content" rows="8" cols="140"></textarea>
-            </div>
-
-            <div class="btn-group">
-                <button class="btn btn-ghost">Cancel</button>
-                <button class="btn btn-blue" type="submit" name="Publish">Publish </button>
-            </div>
-          </form>
+        <post-editor @save="addPost" />
     </div>
 </template>
 <script>
 import sourceData from '@/data.json'
 import PostList from '@/components/PostList.vue'
+import PostEditor from '@/components/PostEditor.vue'
 
 export default {
   components: {
-    PostList
+    PostList,
+    PostEditor
   },
   props: {
     id: {
@@ -37,8 +24,7 @@ export default {
   data () {
     return {
       threads: sourceData.threads,
-      posts: sourceData.posts,
-      newPostText: ''
+      posts: sourceData.posts
     }
   },
   computed: {
@@ -50,19 +36,15 @@ export default {
     }
   },
   methods: {
-    addPost () {
-      const postId = 'gggg' + Math.random()
+    addPost (eventData) {
       const post = {
-        id: postId,
-        text: this.newPostText,
-        publishedAt: Math.floor(Date.now() / 1000),
-        threadId: this.id,
-        userId: 'rpbB8C6ifrYmNDufMERWfQUoa202'
+        ...eventData.post,
+        threadId: this.id
       }
-      this.posts.push(post)
-      this.threads.posts?.push(postId)
 
-      this.newPostText = ''
+      this.posts.push(post)
+      this.threads.posts?.push(post.id)
+      console.log(post)
     }
   }
 }
