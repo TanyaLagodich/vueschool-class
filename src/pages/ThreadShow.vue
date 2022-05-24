@@ -7,8 +7,8 @@
 </template>
 <script>
 import sourceData from '@/data.json'
-import PostList from '@/components/PostList.vue'
-import PostEditor from '@/components/PostEditor.vue'
+import PostList from '@/components/PostList'
+import PostEditor from '@/components/PostEditor'
 
 export default {
   components: {
