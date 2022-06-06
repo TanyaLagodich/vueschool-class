@@ -40,9 +40,7 @@ export default {
         ...eventData.post,
         threadId: this.id
       }
-
-      this.posts.push(post)
-      this.threads.posts?.push(post.id)
+      this.$store.dispatch('createPost', post)
     }
   }
 }
