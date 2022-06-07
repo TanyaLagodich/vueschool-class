@@ -4,7 +4,7 @@
         <h2 class="list-title">
           <router-link
             v-if="categoryId"
-            :to="{ name: 'category', params: { id: categoryId } }"
+            :to="{ name: 'Category', params: { id: categoryId } }"
           >
             {{ title }}
           </router-link>
