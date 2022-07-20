@@ -3,6 +3,7 @@ import Home from '@/pages/Home'
 import Forum from '@/pages/Forum'
 import Category from '@/pages/Category'
 import ThreadShow from '@/pages/ThreadShow'
+import Profile from '@/pages/Profile'
 import NotFound from '@/pages/NotFound'
 import sourceData from '@/data.json'
 
@@ -11,6 +12,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/me',
+    name: 'Profile',
+    component: Profile
   },
   {
     path: '/category/:id',
